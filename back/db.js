@@ -33,8 +33,8 @@ const { Balance, Transaction } = sequelize.models;
 
 // Entity relations
 //  .hasOne     .hasMany    .belongsTo  .belongsToMany
-Balance.hasMany(Transaction);
-Transaction.belongsTo(Balance);
+Balance.hasMany(Transaction, {as: 'transactions', foreignKey: 'accountId' });
+Transaction.belongsTo(Balance, {as: 'account'});
 
 module.exports = {
   ...sequelize.models, // To be imported as models in routes.

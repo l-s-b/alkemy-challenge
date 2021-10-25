@@ -27,12 +27,15 @@ module.exports = (sequelize) => {
         type: DataTypes.ENUM('INFLOW', 'OUTFLOW'),
         allowNull: false,
     },
-/*     EXTRA:
+    accountId: { // Relación a Balance
+      type: DataTypes.INTEGER,
+      defaultValue: 1,
+  },
     category: {
         type: DataTypes.ENUM(
             'Healthcare', 'Food', 'Clothing', 'Transportation', 'Shares', 'Donations',
             'Entertainment', 'Services', 'Rent', 'Supplies', 'Salary', 'Other'),
         allowNull: true,
-    }, */
+    },
   });
 }
