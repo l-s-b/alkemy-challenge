@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/l-s-b/alkemy-challenge/issues"
   },
-  "homepage": "https://github.com/l-s-b/alkemy-challenge#readme"
+  "homepage": "https://github.com/l-s-b/alkemy-challenge#readme",
+  "dependencies": {
+    "create-react-app": "^4.0.3"
+  }
 }
