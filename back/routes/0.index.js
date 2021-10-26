@@ -11,6 +11,6 @@ const del = require('./4.delete.js');
 router.use('/', get);
 router.use('/transaction', post);
 router.use('/transaction', put);
-/* router.use('/', del); */
+router.use('/transaction', del);
 
 module.exports = router;
