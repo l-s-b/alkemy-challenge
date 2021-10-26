@@ -24,7 +24,7 @@ module.exports = (sequelize) => {
         allowNull: false,
     },
     type: { // Ingreso/Egreso
-        type: DataTypes.ENUM('INFLOW', 'OUTFLOW'),
+        type: DataTypes.ENUM("INFLOW", "OUTFLOW"),
         allowNull: false,
     },
     accountId: { // Relación a Balance
