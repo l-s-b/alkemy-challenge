@@ -12,7 +12,6 @@
   --dark1: #212529;
   --dark2: rgba(0,0,0,0.85);
   --black: #000;
-
 }
 
 .App {
@@ -102,4 +101,8 @@ ul { /* UL ELEMENT BASIC STYLE */
   max-width: 25%;
   max-height: 25%;
   border-radius: 50%;
+}
+
+#space {
+  width: 1rem;
 }

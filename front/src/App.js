@@ -1,15 +1,16 @@
 import './css/App.css'; // eslint-disable-next-line
 import { Route, Switch } from 'react-router-dom';
 import Footer from './components/Footer';
+import NavBar from './components/NavBar';
 
 function App() {
   return (
     <div className="App">
-      <h2>Bankemy</h2>
+      <Route path='/' component={NavBar} />
       <Switch>
-{/*         <Route exacth path='/' component={} /> */}
+
       </Switch>
-      <Footer />
+      <Route path='/' component={Footer} />
     </div>
   );
 }

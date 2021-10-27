@@ -1,0 +1,18 @@
+.Nav {
+  background-color: var(--lightBlue);
+  min-height: 10vh;
+  display: flex;
+  padding: 0 1rem;
+  margin-bottom: 0.5rem;
+  flex-direction: row;
+  align-items: center;
+  justify-content:space-between;
+  font-size: 1rem;
+  font-weight: 600;
+  color: white;
+}
+
+#navbar-links {
+  display: flex;
+  justify-content: space-between;
+}
