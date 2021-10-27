@@ -1,38 +1,105 @@
+/* GLOBAL VARIABLES: */
+:root {
+  --slow: 600ms;
+  --quick: 350ms;
+  --white: #fff;
+  --extraLightBlue: #c6edfc;
+  --lightBlue: #58c1f5;
+  --blue: #1890ff;
+  --transBlue: rgba(29,130,246,0.5);
+  --lightGreen: #a5e9cc;
+  --green: #21d09d;
+  --dark1: #212529;
+  --dark2: rgba(0,0,0,0.85);
+  --black: #000;
+
+}
+
 .App {
+  position: relative;
   text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+  background-color: var(--white);
+  color: var(--dark2);
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  padding-bottom: 10px;
 }
 
-.App-link {
-  color: #61dafb;
+.main {
+  margin: 20px 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.wrap {
+padding-bottom: 3rem;
+}
+
+.h2 {
+  font-size: 4rem;
+  color: var(--dark2);
+  margin: 0;
+  padding: 0;
+}
+
+.Gap {
+  height: 100vh;
+  width: 100vh;
+}
+
+.bigBtn {
+background-color: var(--blue);
+color: var(--white);
+padding: 10px;
+font-size: 2rem;
+border-radius: 100%;
+margin: 40px;
+opacity: 80%;
+transform: scale(1);
+transition-duration: var(--quick);
+}
+
+.bigBtn:hover {
+transform: scale(1.1);
+background-color: var(--green);
+opacity: 1;
+transition-duration: var(--slow);
+}
+
+.link { /* LINK UNDERLINE REMOVAL */
+  text-decoration: none;
+}
+.link:link {
+  color: var(--white);
+}
+.link:visited {
+  color: var(--extraLightBlue);
+}
+.link:hover {
+  color: var(--lightGreen);
+}
+
+.home {
+  text-shadow: black;
+}
+
+ul { /* UL ELEMENT BASIC STYLE */
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.box {
+  display: block;
+  max-width: 50vw;
+  padding: 20px;
+  margin: auto;
+  margin-bottom: 10px;
+  background-color: rgb(30, 30, 50);
+  color: var(--white);
+  border-radius: 20px;
+  border: 5px solid rgb(20, 20, 40); /* width style color */
+}
+
+.waitgif {
+  max-width: 25%;
+  max-height: 25%;
+  border-radius: 50%;
 }
