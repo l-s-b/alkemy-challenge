@@ -1,8 +1,8 @@
 import { GET_BALANCE,
     GET_ALL_TRANSACTIONS,
-    GET_TRANSACTION_BY_ID,
-    POST_NEW_TRANSACTION,
-    EDIT_TRANSACTION,
+    GET_TRANSACTION_BY_ID, // eslint-disable-next-line
+    POST_NEW_TRANSACTION, // eslint-disable-next-line
+    EDIT_TRANSACTION, // eslint-disable-next-line
     DELETE_TRANSACTION
  } from './actions';
 const initialState = {

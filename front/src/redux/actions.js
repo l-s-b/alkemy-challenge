@@ -19,7 +19,7 @@ export function getBalance() {
                     type: GET_BALANCE,
                     payload: response.data,
                 })
-            }).catch(console.error(e));
+            }).catch(e=> console.error(e));
     }
 };
 
@@ -31,7 +31,7 @@ export function getList() {
                     type: GET_ALL_TRANSACTIONS,
                     payload: response.data,
                 })
-            }).catch (console.error(e));
+            }).catch(e => console.error(e));
     }
 };
 
@@ -123,6 +123,6 @@ return (dispatch) => {
                     type: POST_NEW_BALANCE,
                     payload: response.data,
                 })
-            }).catch(console.error(e));
+            }).catch(e => console.error(e));
     }
 }; */
