@@ -7,9 +7,9 @@ export const POST_NEW_TRANSACTION = "POST_NEW_TRANSACTION";
 export const EDIT_TRANSACTION = "EDIT_TRANSACTION";
 export const DELETE_TRANSACTION = "DELETE_TRANSACTION";
 
-// GETs: [getBalance, getList, getTransaction(id)]
-// CLEARs: [clearBalance, clearList, clearTransaction(id)]
-// POST, PUT, DELETE: [postTransaction, putTransaction, deleteTransaction]
+// GETs: [1-getBalance, 2-getList, 3-getTransaction(id)]
+// CLEARs: [4-clearBalance, 5-clearList, 6-clearTransaction(id)]
+// POST, PUT, DELETE: [7-postTransaction, 8-putTransaction, 9-deleteTransaction]
 
 export function getBalance() {
     return (dispatch) => {
