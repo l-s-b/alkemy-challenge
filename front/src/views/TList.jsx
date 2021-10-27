@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getTransactionList } from '../redux/actions';
+import { getTransactionList,  } from '../redux/actions';
 
 export default function TList() {
     const dispatch = useDispatch();

@@ -27,7 +27,7 @@ router.get('/main', async (_req, res, next) => {
         include: [{
             model: Transaction,
             as: 'transactions',
-            attributes: ["type", "amount", "item", "category"]
+            attributes: ["id", "type", "date", "amount", "item", "category"]
         }],
     })
         return res.json(updated[0]);

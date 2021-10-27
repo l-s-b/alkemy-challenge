@@ -21,6 +21,7 @@ export default function Home() {
                 <h2>Latest transactions</h2> <Link to='/transactions'><h4>See all</h4></Link>
                 {balance.transactions.map(t =>
                     <div className="t-card">
+                    <Link className="link" to={`/transaction/${t.id}`}>
                         <div>{t.date}</div>
                         <div className="2nd-line">
                             <div>{t.item}</div>
@@ -28,6 +29,7 @@ export default function Home() {
                             <button>Edit</button>
                             <button>Delete</button>
                         </div>
+                    </Link>
                     </div>
                 )}
             </div>

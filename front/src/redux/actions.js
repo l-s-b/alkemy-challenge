@@ -11,7 +11,7 @@ export const DELETE_TRANSACTION = "DELETE_TRANSACTION";
 // CLEARs: [4-clearBalance, 5-clearList, 6-clearTransaction(id)]
 // POST, PUT, DELETE: [7-postTransaction, 8-putTransaction, 9-deleteTransaction]
 
-export function getBalance() {
+export function getBalance() { //WORKING
     return (dispatch) => {
         axios.get('http://localhost:1337/api/main')
             .then(response => {
@@ -23,7 +23,7 @@ export function getBalance() {
     }
 };
 
-export function getTransactionList() {
+export function getTransactionList() { //WORKING
     return (dispatch) => {
         axios.get('http://localhost:1337/api/transactions')
             .then(response => {
@@ -74,18 +74,16 @@ export function clearTransaction() {
    }
 };
 
-// POST New
-/* export function postTransaction() {
+// POST New (YET TO TRY)
+export function postTransaction(state) {
     return (dispatch) => {
-        axios.post('http://localhost:1337/api/transaction')
+        axios.post('http://localhost:1337/api/transaction', state)
             .then(response => {
-                dispatch({
-                    type: POST_NEW_TRANSACTION,
-                    payload: response.data,
-                })
-            }).catch (console.error(e));
+               console.log(response);
+               return response;
+            }).catch (e => console.error(e));
     }
-}; */
+};
 
 // PUT Existing
 /*  export function putTransaction(id) {
@@ -101,17 +99,18 @@ export function clearTransaction() {
 }; */
 
 // DELETE Existing
-/*  export function deleteTransaction(id) {
+export function deleteTransaction(id) {
     return (dispatch) => {
-        axios.post(`http://localhost:1337/api/transaction/${id}`)
+        axios.delete(`http://localhost:1337/api/transaction/${id}`)
             .then(response => {
                 dispatch({
                     type: DELETE_TRANSACTION,
                     payload: {msg: "deleted"},
                 })
-            }).catch (console.error(e));
+                alert("Transaction deleted") //Please improve.
+            }).catch (e => console.error(e));
     }
-}; */
+};
 
 /* EXTRA?: Don't forget to implement in backend
 export const POST_NEW_BALANCE = "POST_NEW_BALANCE";
