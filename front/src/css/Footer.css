@@ -1,0 +1,28 @@
+.Footer {
+  position: absolute;
+  padding-top: 10px;
+  bottom: -5rem -10px;
+  width: 100%;
+  height: 6rem;
+  background-color: #282c34;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  color: white;
+}
+
+#ar-container {
+  background-color: var(--lightBlue);
+  padding: 0.1rem 0;
+  margin: 0.25rem auto;
+  width: 4rem;
+
+}
+
+#ar-flag {
+  background-color: var(--white);
+  padding: 0.25 0.25rem;
+  font-size: 0.75rem;
+}
