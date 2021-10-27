@@ -24,13 +24,13 @@ function reducer(state = initialState, action) {
         case GET_BALANCE: {
             return {
                 ...state,
-                balance: action.payload // FILTER HERE
+                balance: action.payload
             }
         }
         case GET_ALL_TRANSACTIONS: {
             return {
                 ...state,
-                transactionList: action.payload // FILTER HERE
+                transactionList: action.payload
             }
         }
 

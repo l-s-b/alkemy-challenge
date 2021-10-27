@@ -1,25 +1,23 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { getBalance } from '../redux/actions';
+import { getTransactionList } from '../redux/actions';
 
-export default function Home() {
+export default function TList() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        dispatch(getBalance());
+        dispatch(getTransactionList());
     }, []);
 
-    const balance = useSelector(state => state.balance);
+    const list = useSelector(state => state.transactionList);
     return (<>
-    {balance === undefined || null ? (
+    {list === undefined || null ? (
         <div> Loading... </div>
     ) : (
             <div>
-                <h2>Your Balance</h2>
-                <h2>${balance.funds}</h2>
-                <h2>Latest transactions</h2> <Link to='/transactions'><h4>See all</h4></Link>
-                {balance.transactions.map(t =>
+                <h2>All transactions</h2>
+                {list.map(t =>
                     <div className="t-card">
                         <div>{t.date}</div>
                         <div className="2nd-line">
@@ -35,4 +33,3 @@ export default function Home() {
     </>);
 }
 ;
-

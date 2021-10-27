@@ -23,7 +23,7 @@ export function getBalance() {
     }
 };
 
-export function getList() {
+export function getTransactionList() {
     return (dispatch) => {
         axios.get('http://localhost:1337/api/transactions')
             .then(response => {
