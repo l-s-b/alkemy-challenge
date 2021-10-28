@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getBalance } from '../redux/actions';
+import '../css/Card.css';
 
 export default function Home() {
     const dispatch = useDispatch();
@@ -19,22 +20,25 @@ export default function Home() {
             <div>
                 <h2>Your Balance</h2>
                 <h2>${balance.funds}</h2>
-                <h2>Latest transactions</h2> <Link to='/transactions'><h4>See all</h4></Link>
+                <div className="t-cards">
+                <h2>Latest transactions</h2>
+                <Link className="link" to='/transactions'><h4>See all</h4></Link>
                 {limited.map(t =>
-                    <div className="t-card">
-                    <Link className="link" to={`/transaction/${t.id}`}>
-                        <div>{t.date}</div>
-                        <div className="2nd-line">
-                            <div>{t.item}</div>
-                            <div style={{color: t.type === "INFLOW" ? 'green' : 'red'}}>
-                                ${t.amount.toFixed(2)}
+                        <Link className="link t-card" to={`./transaction/${t.id}`}>
+                        <div className="t-date">{t.date}</div>
+                            <div className="t-item">{t.item}</div>
+                            <div className="t-row">
+                                <div className="t-amount"
+                                style={{color: t.type === "INFLOW" ? 'green' : 'red'}}
+                                >
+                                    ${t.amount.toFixed(2)}
+                                </div>
+                                <button className="btn t-btn">Edit</button>
+                                <button className="btn t-btn">Delete</button>
                             </div>
-                            <button>Edit</button>
-                            <button>Delete</button>
-                        </div>
-                    </Link>
-                    </div>
+                        </Link>
                 )}
+                </div>
             </div>
         )}
     </>);

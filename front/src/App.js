@@ -13,7 +13,7 @@ function App() {
       <Switch>
         <Route exact path='/transaction/:id' component={TDetail} />
         <Route exact path='/main' component={Home} />
-        <Route path='/transactions' component={TList} />
+        <Route exact path='/transactions' component={TList} />
       </Switch>
       <Route path='/' component={Footer} />
     </div>
