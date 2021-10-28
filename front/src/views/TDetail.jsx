@@ -20,7 +20,7 @@ export default function TDetail() {
     ) : (
             <div>
                 <h2>Transaction Detail</h2>
-                    <div className="t-card" id={t.id}>
+                    <div id={t.id}>
                         <div>{t.type}</div>
                         <div>{t.date}</div>
                         <div>{t.item}</div>

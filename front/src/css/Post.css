@@ -1,0 +1,108 @@
+/* CLASES POR ORDEN ALFABÉTICO */
+
+.contForm2 {
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    box-shadow:
+    0px 15px 10px -15px var(--lightBlue),
+    0px -15px 10px -15px var(--lightBlue);
+    margin: 1rem;
+    transition-duration: var(--slow);
+}
+
+.contRend {
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    height: auto;
+    max-width: max-content;
+    padding: 1rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--dark1);
+    border-radius: 10px;
+    box-shadow: 0 0 1rem var(--lightBlue);
+    animation: fade var(--Transition);
+    transition-timing-function: var(--CustomBezier);
+}
+
+.contForm2 input, select, option, textarea {
+    border-style: solid;
+    border-radius: 10px;
+    border-color: var(--gray);
+    min-width: max-content;
+    min-height: max-content;
+}
+
+.date {
+    width: 173px;
+}
+
+.formTitle {
+    margin: 0.5rem;
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+
+input:hover, select:hover, option:hover, textarea:hover {
+    border-color: var(--extraLightBlue);
+}
+input:before, select:before, option:before, textarea:before {
+    border-color: var(--lightBlue);
+}
+
+input::selection, select::selection, option::selection, textarea::selection {
+    border-color: var(--lightBlue);
+}
+
+input:enabled
+
+.inputCheck{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    width: auto;
+    border-style: none;
+    margin-block: 0.25rem;
+}
+
+.sectorizar {
+    display: flex;
+    flex-direction: column;
+}
+
+.separator { width: 2rem; }
+
+/* MEDIA QUERIES */
+@media (max-width: 420px) {
+    .inputCheck {
+        width: 100%;
+        display: flex;
+    }
+}
+
+@media (max-width: 420px) {
+    .row {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+/*ANIMATIONS*/
+@keyframes fade {
+    from {
+        opacity: 0;
+    } to {
+        opacity: 1;
+    }
+}

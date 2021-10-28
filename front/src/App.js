@@ -5,6 +5,7 @@ import NavBar from './components/NavBar';
 import Home from './views/Home';
 import TList from './views/TList';
 import TDetail from './views/TDetail';
+import TPost from './views/TPost';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Switch>
         <Route exact path='/transaction/:id' component={TDetail} />
         <Route exact path='/main' component={Home} />
+        <Route exact path='/transactions/new' component={TPost} />
         <Route exact path='/transactions' component={TList} />
       </Switch>
       <Route path='/' component={Footer} />
