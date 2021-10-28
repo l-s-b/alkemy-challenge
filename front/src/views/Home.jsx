@@ -8,9 +8,10 @@ export default function Home() {
 
     useEffect(() => {
         dispatch(getBalance());
-    }, []);
+    }, [dispatch]);
 
     const balance = useSelector(state => state.balance);
+    const limited = balance?.transactions.slice(0,10);
     return (<>
     {balance === undefined || null ? (
         <div> Loading... </div>
@@ -19,13 +20,15 @@ export default function Home() {
                 <h2>Your Balance</h2>
                 <h2>${balance.funds}</h2>
                 <h2>Latest transactions</h2> <Link to='/transactions'><h4>See all</h4></Link>
-                {balance.transactions.map(t =>
+                {limited.map(t =>
                     <div className="t-card">
                     <Link className="link" to={`/transaction/${t.id}`}>
                         <div>{t.date}</div>
                         <div className="2nd-line">
                             <div>{t.item}</div>
-                            <div style={{color: t.type === "INFLOW" ? 'green' : 'red'}}>${t.amount}</div>
+                            <div style={{color: t.type === "INFLOW" ? 'green' : 'red'}}>
+                                ${t.amount.toFixed(2)}
+                            </div>
                             <button>Edit</button>
                             <button>Delete</button>
                         </div>

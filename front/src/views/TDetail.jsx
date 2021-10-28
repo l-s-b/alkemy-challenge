@@ -13,18 +13,20 @@ export default function TDetail() {
     }, [dispatch, id]);
 
     const t = useSelector(state => state.transactionByID);
-    console.log(t);
+
     return (<>
     {t === undefined || null ? (
         <div> Loading... </div>
     ) : (
             <div>
                 <h2>Transaction Detail</h2>
-                    <div className="t-card">
+                    <div className="t-card" id={t.id}>
                         <div>{t.type}</div>
                         <div>{t.date}</div>
                         <div>{t.item}</div>
-                        <div style={{color: t.type === "INFLOW" ? 'green' : 'red'}}>${t.amount}</div>
+                        <div style={{color: t.type === "INFLOW" ? 'green' : 'red'}}>
+                            ${t.amount.toFixed(2)}
+                        </div>
                         <div>Category: {t.category}</div>
                         <button>Edit</button>
                         <button>Delete</button>

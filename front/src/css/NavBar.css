@@ -16,3 +16,19 @@
   display: flex;
   justify-content: space-between;
 }
+
+.home {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.isotype {
+  width: 2rem;
+  height: 2rem;
+  margin: 1.5rem 0;
+}
+
+.logotype {
+  height: 2rem;
+}
