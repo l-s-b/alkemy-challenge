@@ -12,9 +12,9 @@ function App() {
     <div className="App">
       <Route path='/' component={NavBar} />
       <Switch>
+        <Route exact path='/transaction/new' component={TPost} />
         <Route exact path='/transaction/:id' component={TDetail} />
         <Route exact path='/main' component={Home} />
-        <Route exact path='/transactions/new' component={TPost} />
         <Route exact path='/transactions' component={TList} />
       </Switch>
       <Route path='/' component={Footer} />

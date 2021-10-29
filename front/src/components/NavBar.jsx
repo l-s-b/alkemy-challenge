@@ -9,7 +9,7 @@ const NavBar = function() {
         <img className='logotype' alt='Bankemy' src='../../bankemy-logo-black-03.svg'/>
     </Link>
     <div id='navbar-links'>
-    <Link className='link' to='/transaction/post'>New transaction</Link>
+    <Link className='link' to='/transaction/new'>New transaction</Link>
     <span id="space"/>
     <Link className='link' to='/main/login'>Log in</Link>
     </div>
