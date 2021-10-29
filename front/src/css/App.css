@@ -1,7 +1,9 @@
 /* GLOBAL VARIABLES: */
 :root {
+  /* Transitions */
   --slow: 600ms;
   --quick: 350ms;
+  /* Colors */
   --white: #fff;
   --extraLightBlue: #c6edfc;
   --lightBlue: #58c1f5;
@@ -14,7 +16,12 @@
   --black: #000;
   --lightPink: #FFE4E1;
   --gray: gray;
+  /* Box-Shadows */
+  --ShadowBtn:  0 0 10px rgba(0, 0, 0, 1);
 
+}
+a {
+all: revert
 }
 
 .App {
@@ -67,6 +74,22 @@ opacity: 1;
 transition-duration: var(--slow);
 }
 
+.btn {
+color: var(--Black);
+height: 2rem;
+font-weight: bold;
+border-style: none;
+border-radius: 0.5rem;
+cursor: pointer;
+transition: var(--quick);
+}
+
+.btn:hover{
+  color: var(--Black);
+  box-shadow: var(--ShadowBtn);
+  transition: var(--slow);
+}
+
 .link { /* LINK UNDERLINE REMOVAL */
   text-decoration: none;
 }
@@ -77,7 +100,8 @@ transition-duration: var(--slow);
   color: var(--extraLightBlue);
 }
 .link:hover {
-  color: var(--lightGreen);
+  text-shadow: var(--lightBlue);
+  transition: var(--quick);
 }
 
 .home {

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'; // eslint-disable-next-line
 import { Link } from 'react-router-dom';
-import { getTransactionList,  } from '../redux/actions';
+import { getTransactionList, deleteTransaction } from '../redux/actions';
 import '../css/Card.css';
 
 export default function TList() {
@@ -9,13 +9,11 @@ export default function TList() {
 
     useEffect(() => {
         dispatch(getTransactionList());
-    }, [dispatch]);
+    }, [dispatch, deleteTransaction()]);
 
     const list = useSelector(state => state.transactionList);
     return (<>
-    {list === undefined || null ? (
-        <div> Loading... </div>
-    ) : (
+    {list ? (
             <div className="t-cards">
                 <h2>All transactions</h2>
                 {list.map(t =>
@@ -28,13 +26,21 @@ export default function TList() {
                                 >
                                     ${t.amount.toFixed(2)}
                                 </div>
-                                <button className="btn t-btn">Edit</button>
-                                <button className="btn t-btn">Delete</button>
+                                <Link className="link t-btn btn" to={`./transaction/${t.id}`}>Detail</Link>
+                                <button className="t-btn btn edit-btn">Edit</button>
+                                <button
+                                    className="t-btn btn delete-btn"
+                                    onClick={deleteTransaction(t.id)}
+                                    >Delete
+                                </button>
                             </div>
                         </div>
+
                 )}
             </div>
-        )}
+        ) : list === undefined ? <div> Loading... </div>
+        : <div> List not found. </div>
+        }
     </>);
 }
 ;

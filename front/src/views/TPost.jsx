@@ -28,10 +28,12 @@ export default function TPost() {
     axios.post('http://localhost:1337/api/transaction', values)
         .then(response => {
           axios.get('http://localhost:1337/api/transactions')
-          .then(results => { push(`http://localhost:1337/api/transaction/${results.data[0]}`) });
+          .then(results => { push(`${results.data[results.data.length - 1].id}`) });
             alert("New transaction successfully registered.");
         }).catch(e => console.error(e));
-    } else {alert ('All fields are required.')}
+    }
+
+    else {alert ('All fields are required.')}
     }
 
   return (
@@ -83,12 +85,10 @@ export default function TPost() {
           <div className="row">
             <label>Category: </label>
             <div className="inputCheck">
-              {/*               {!foundCategories ? "Wait a second..." : */}
               <select name="category" onChange={handleChange} defaultValue="">
                 <option value="" disabled>
                   Select:
                 </option>
-                {/*                   {foundCategories.map(cat => cat)} */}
                 <option value="Food">Food</option>
                 <option value="Clothing">Clothing</option>
                 <option value="Transportation">Transportation</option>
@@ -101,7 +101,6 @@ export default function TPost() {
                 <option value="Donations">Donations</option>
                 <option value="Other">Other</option>
               </select>
-              {/*               } */}
             </div>
           </div>
 

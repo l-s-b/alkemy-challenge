@@ -48,5 +48,19 @@
 }
 
 .t-btn {
+    display: flex;
+    align-items: center;
+    color: var(--dark2) !important;
+    font-size: 0.75em !important;
+    font-weight: 650 !important;
+    padding: 0 0.5em;
     margin-left: 0.4rem;
 }
+.delete-btn {
+    background-color: var(--lightPink);
+}
+.delete-btn:hover {
+    background-color: red;
+    color: var(--white);
+}
+

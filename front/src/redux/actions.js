@@ -107,7 +107,7 @@ export function deleteTransaction(id) {
                     type: DELETE_TRANSACTION,
                     payload: {msg: "deleted"},
                 })
-                alert("Transaction deleted") //Please improve.
+                alert("Transaction deleted") //Please enhance.
             }).catch (e => console.error(e));
     }
 };
