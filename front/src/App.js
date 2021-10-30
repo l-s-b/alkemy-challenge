@@ -6,12 +6,14 @@ import Home from './views/Home';
 import TList from './views/TList';
 import TDetail from './views/TDetail';
 import TPost from './views/TPost';
+import TEdit from './views/TEdit';
 
 function App() {
   return (
     <div className="App">
       <Route path='/' component={NavBar} />
       <Switch>
+        <Route exact path='/transaction/edit/:id' component={TEdit} />
         <Route exact path='/transaction/new' component={TPost} />
         <Route exact path='/transaction/:id' component={TDetail} />
         <Route exact path='/main' component={Home} />

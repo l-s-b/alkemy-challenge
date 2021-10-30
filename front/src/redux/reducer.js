@@ -3,7 +3,6 @@ import { GET_BALANCE,
     GET_TRANSACTION_BY_ID, // eslint-disable-next-line
     POST_NEW_TRANSACTION, // eslint-disable-next-line
     EDIT_TRANSACTION, // eslint-disable-next-line
-    DELETE_TRANSACTION
  } from './actions';
 const initialState = {
     balance: undefined,
@@ -15,7 +14,8 @@ const initialState = {
         amount: 0.0,
         date: "",
         category: ""
-    }
+    },
+    transactionEdit: undefined,
 };
 
 function reducer(state = initialState, action) {
@@ -38,6 +38,13 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 transactionByID: action.payload
+            }
+        }
+
+        case EDIT_TRANSACTION: {
+            return {
+                ...state,
+                transactionEdit: action.payload
             }
         }
 

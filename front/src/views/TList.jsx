@@ -1,22 +1,23 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux'; // eslint-disable-next-line
 import { Link } from 'react-router-dom';
-import { getTransactionList, deleteTransaction } from '../redux/actions';
+import { getTransactionList, deleteTransaction, clearTransaction } from '../redux/actions';
 import '../css/Card.css';
 
 export default function TList() {
     const dispatch = useDispatch();
 
-    useEffect(() => {
+       useEffect(() => {
         dispatch(getTransactionList());
-    }, [dispatch, deleteTransaction()]);
+    }, [dispatch]);
 
     const list = useSelector(state => state.transactionList);
+    const reversed = () => list ? [...list].reverse() : undefined;
     return (<>
     {list ? (
             <div className="t-cards">
                 <h2>All transactions</h2>
-                {list.map(t =>
+                {reversed().map(t =>
                     <div className="t-card" id={t.id}>
                         <div className="t-date">{t.date}</div>
                             <div className="t-item">{t.item}</div>
@@ -27,7 +28,7 @@ export default function TList() {
                                     ${t.amount.toFixed(2)}
                                 </div>
                                 <Link className="link t-btn btn" to={`./transaction/${t.id}`}>Detail</Link>
-                                <button className="t-btn btn edit-btn">Edit</button>
+                                <Link className="link t-btn btn" to={`./transaction/edit/${t.id}`}>Edit</Link>
                                 <button
                                     className="t-btn btn delete-btn"
                                     onClick={deleteTransaction(t.id)}

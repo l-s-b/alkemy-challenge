@@ -16,6 +16,7 @@
   --black: #000;
   --lightPink: #FFE4E1;
   --gray: gray;
+  --lightGray: #ddd;
   /* Box-Shadows */
   --ShadowBtn:  0 0 10px rgba(0, 0, 0, 1);
 
@@ -91,7 +92,7 @@ transition: var(--quick);
 }
 
 .link { /* LINK UNDERLINE REMOVAL */
-  text-decoration: none;
+  text-decoration: none !important;
 }
 .link:link {
   color: var(--white);

@@ -12,7 +12,7 @@ export default function Home() {
     }, [dispatch]);
 
     const balance = useSelector(state => state.balance);
-    const limited = balance?.transactions.slice(0,10);
+    const limited = () => balance ? [...balance.transactions].reverse().slice(0,10) : undefined;
     return (<>
     {balance === undefined || null ? (
         <div> Loading... </div>
@@ -23,7 +23,7 @@ export default function Home() {
                 <div className="t-cards">
                 <h2>Latest transactions</h2>
                 <Link className="link" to='/transactions'><h4>See all</h4></Link>
-                {limited.map(t =>
+                {limited().map(t =>
                         <Link className="link t-card" to={`./transaction/${t.id}`}>
                         <div className="t-date">{t.date}</div>
                             <div className="t-item">{t.item}</div>

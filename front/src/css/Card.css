@@ -50,6 +50,7 @@
 .t-btn {
     display: flex;
     align-items: center;
+    background-color: var(--lightGray);
     color: var(--dark2) !important;
     font-size: 0.75em !important;
     font-weight: 650 !important;

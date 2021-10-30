@@ -86,17 +86,17 @@ export function postTransaction(state) {
 };
 
 // PUT Existing
-/*  export function putTransaction(id) {
+ export function putTransaction(id) {
     return (dispatch) => {
-        axios.post(`http://localhost:1337/api/transaction/${id}`)
+        axios.put(`http://localhost:1337/api/transaction/${id}`)
             .then(response => {
                 dispatch({
                     type: EDIT_TRANSACTION,
                     payload: response.data,
                 })
-            }).catch (console.error(e));
+            }).catch (e => console.error(e));
     }
-}; */
+};
 
 // DELETE Existing
 export function deleteTransaction(id) {
@@ -106,8 +106,8 @@ export function deleteTransaction(id) {
                 dispatch({
                     type: DELETE_TRANSACTION,
                     payload: {msg: "deleted"},
-                })
-                alert("Transaction deleted") //Please enhance.
+                });
+                alert("Transaction deleted"); //Please enhance.
             }).catch (e => console.error(e));
     }
 };
