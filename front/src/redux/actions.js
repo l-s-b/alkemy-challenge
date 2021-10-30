@@ -25,7 +25,7 @@ export function getBalance() { //WORKING
 
 export function getTransactionList() { //WORKING
     return (dispatch) => {
-        axios.get('http://localhost:1337/api/transactions')
+        axios.get(`http://localhost:1337/api/transactions`)
             .then(response => {
                 dispatch({
                     type: GET_ALL_TRANSACTIONS,
@@ -90,23 +90,21 @@ export function postTransaction(state) {
     return (dispatch) => {
         axios.put(`http://localhost:1337/api/transaction/${id}`)
             .then(response => {
-                dispatch({
+                console.log(response);
+                return response;
+/*                 dispatch({
                     type: EDIT_TRANSACTION,
                     payload: response.data,
-                })
+                }) */
             }).catch (e => console.error(e));
     }
 };
 
 // DELETE Existing
 export function deleteTransaction(id) {
-    return (dispatch) => {
+    return () => {
         axios.delete(`http://localhost:1337/api/transaction/${id}`)
             .then(response => {
-                dispatch({
-                    type: DELETE_TRANSACTION,
-                    payload: {msg: "deleted"},
-                });
                 alert("Transaction deleted"); //Please enhance.
             }).catch (e => console.error(e));
     }
