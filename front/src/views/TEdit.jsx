@@ -7,27 +7,46 @@ import axios from 'axios';
 export default function TEdit() {
     const dispatch = useDispatch();
     const { id } = useParams();
-    let [values, setValues] = useState({});
+    const [type, setType] = useState("");
+    const [item, setItem] = useState("");
+    const [amount, setAmount] = useState(parseFloat(0));
+    const [date, setDate] = useState("");
+    const [category, setCategory] = useState("");
 
     useEffect(() => {
         dispatch(getTransaction(id));
         return () => { dispatch(clearTransaction()); };
-    }, [dispatch, id]);
+    }, [dispatch]);
 
     const t = useSelector(state => state.transactionByID);
+    console.log("TRANSACTION BY ID: ", t); //OK
+    
+    t && setType(t.type);
+    t && setItem(t.item);
+    t && setAmount(t.amount);
+    t && setDate(t.date);
+    t && setCategory(t.category);
 
+/*    setValues(values => t && ({
+    ...values,
+    item: t.item,
+    amount: parseFloat(t.amount),
+    date: t.date,
+    category: t.category,
+  })); */
+/* 
     function handleChange(e) {
         setValues(values => ({
-          ...values,
+          ...item,
           [e.target.name]: e.target.value,
-        }));
-      }
+        })) ;
+      } */
 
     function handleSubmit(e) {
         e.preventDefault();
-        axios.put(`http://localhost:1337/api/transaction/${t.id}`, values)
+        axios.put(`http://localhost:1337/api/transaction/${t.id}`, {type, item, amount, date, category})
             .then(response => {
-                alert("Transaction successfully updated.");
+                alert("Transaction registry successfully updated.");
             }).catch(e => console.error(e));
         }
 
@@ -42,7 +61,7 @@ export default function TEdit() {
                 <div className="row">
                   <label>Type: </label>
                   <div className="inputCheck">
-                    <input disabled value={t.type} />
+                    <label>{type}</label>
                   </div>
                 </div>
 
@@ -53,8 +72,8 @@ export default function TEdit() {
                     <input
                       type="number"
                       name="amount"
-                      value={t.amount}
-                      onChange={handleChange}
+                      value={amount}
+                      onChange={e => setAmount(e.target.value)}
                     />
                   </div>
                 </div>
@@ -65,8 +84,8 @@ export default function TEdit() {
                     <input
                       type="text"
                       name="item"
-                      value={t.item}
-                      onChange={handleChange}
+                      value={item}
+                      onChange={e => setItem(e.target.value)}
                       placeholder="(concept, description)"
                     />
                   </div>
@@ -75,8 +94,8 @@ export default function TEdit() {
                 <div className="row">
             <label>Category: </label>
             <div className="inputCheck">
-              <select name="category" onChange={handleChange} defaultValue="">
-                <option value={t.category}>{t.category}</option>
+              <select name="category" onChange={e => setCategory(e.target.value)} defaultValue="">
+                <option value={category}>{category}</option>
                 <option value="Food">Food</option>
                 <option value="Clothing">Clothing</option>
                 <option value="Transportation">Transportation</option>
@@ -100,14 +119,16 @@ export default function TEdit() {
                 className="date"
                 type="text" //possibly "date"
                 name="date"
-                value={t.date}
-                onChange={handleChange}
-                placeholder="YYYY-MM-DD"
+                value={date}
+                onChange={e => setDate(e.target.value)}
               />
             </div>
           </div>
 
               </div>
+              <button className="bigBtn" type="submit">
+          Edit
+        </button>
             </form>
           </div>
           )}
