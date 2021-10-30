@@ -1,3 +1,8 @@
+.t-title {
+font-size: 2rem;
+font-weight: 400;
+}
+
 .t-filters {
     display: flex;
     flex-direction: row;
@@ -80,8 +85,7 @@
 }
 
 select {
-    margin: auto 0;
-    font: inherit;
+    font: unset;
 }
 
 #filter-label {

@@ -29,7 +29,7 @@ export default function TList() {
     return (<>
     {list ? (
             <div className="t-cards">
-                <h2>All transactions</h2>
+                <h2 className="t-title">My transactions</h2>
 
                 <div className="t-filters">
                 <label id="filter-label">Filter by:</label>
