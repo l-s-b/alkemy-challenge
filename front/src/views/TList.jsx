@@ -12,24 +12,18 @@ export default function TList() {
     const reversed = () => list ? [...list].reverse() : undefined;
 
        useEffect(() => {
-        dispatch(getTransactionList(type));
-        }, [dispatch, type]);
+        dispatch(getTransactionList(type, category));
+        }, [dispatch, type, category]);
 
 
     const handleType = (e) => {
         e.preventDefault();
-        console.log(e.target.value)
         setType(e.target.value);
-        console.log(type); // 1 STEP BACK!
-        getTransactionList(type);
       };
 
       const handleCategory = (e) => {
         e.preventDefault();
-        console.log(e.target.value)
         setCategory(e.target.value);
-        console.log(category); // 1 STEP BACK!
-        getTransactionList(category);
       };
 
     return (<>
@@ -37,18 +31,22 @@ export default function TList() {
             <div className="t-cards">
                 <h2>All transactions</h2>
 
-                <div className="select">
+                <div className="t-filters">
+                <label id="filter-label">Filter by:</label>
+
+                <div className="t-select">
             <select onChange={handleType} defaultValue="">
-              <option value="" disabled>Filter by direction:</option>
-              <option value="INFLOW">Inflow</option>
-              <option value="OUTFLOW">Outflow</option>
-              <option value="">Both</option>
+              <option value="" disabled>Direction:</option>
+              <option value="INFLOW">Incomes</option>
+              <option value="OUTFLOW">Expenditures</option>
+              <option value="">Incomes and expenditures</option>
             </select>
           </div>
 
-          <div className="select">
+          <div className="t-select">
             <select onChange={handleCategory} defaultValue="">
-              <option value="" disabled>Filter by category:</option>
+              <option value="" disabled>Category:</option>
+              <option value="">All categories</option>
               <option value="Food">Food</option>
                 <option value="Clothing">Clothing</option>
                 <option value="Transportation">Transportation</option>
@@ -61,6 +59,7 @@ export default function TList() {
                 <option value="Donations">Donations</option>
                 <option value="Other">Other</option>
             </select>
+          </div>
           </div>
 
                 {reversed().map(t =>

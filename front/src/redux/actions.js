@@ -23,9 +23,9 @@ export function getBalance() { //WORKING
     }
 };
 
-export function getTransactionList() { //WORKING
+export function getTransactionList(type, category) { //WORKING
     return (dispatch) => {
-        axios.get(`http://localhost:1337/api/transactions`)
+        axios.get(`http://localhost:1337/api/transactions?type=${type}&category=${category}`)
             .then(response => {
                 dispatch({
                     type: GET_ALL_TRANSACTIONS,
