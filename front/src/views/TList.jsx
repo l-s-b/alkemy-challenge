@@ -8,12 +8,14 @@ export default function TList() {
     const dispatch = useDispatch();
     const [type, setType] = useState("");
     const [category, setCategory] = useState("");
+    const [lastDeleted, setLastDeleted] = useState("");
     const list = useSelector(state => state.transactionList);
     const reversed = () => list ? [...list].reverse() : undefined;
 
        useEffect(() => {
         dispatch(getTransactionList(type, category));
-        }, [dispatch, type, category]);
+        return dispatch(getTransactionList(type, category));
+        }, [dispatch, type, category, lastDeleted]);
 
 
     const handleType = (e) => {
@@ -24,6 +26,13 @@ export default function TList() {
       const handleCategory = (e) => {
         e.preventDefault();
         setCategory(e.target.value);
+      };
+
+      const handleDelete = (e) => {
+        e.preventDefault();
+        dispatch(deleteTransaction(e.target.value));
+        setLastDeleted(e.target.value);
+        console.log(e.target.value);
       };
 
     return (<>
@@ -75,8 +84,9 @@ export default function TList() {
                                 <Link className="link t-btn btn" to={`./transaction/${t.id}`}>Detail</Link>
                                 <Link className="link t-btn btn" to={`./transaction/edit/${t.id}`}>Edit</Link>
                                 <button
+                                    value={t.id}
                                     className="t-btn btn delete-btn"
-                                    onClick={deleteTransaction(t.id)}
+                                    onClick={handleDelete}
                                     >Delete
                                 </button>
                             </div>

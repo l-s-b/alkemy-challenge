@@ -15,8 +15,11 @@ export default function TEdit() {
 
     useEffect(() => {
         dispatch(getTransaction(id));
-        return () => { dispatch(clearTransaction()); };
-    }, [dispatch]);
+    },);
+
+    useEffect(() => {
+      return () => { dispatch(clearTransaction()); };
+  }, []);
 
     const t = useSelector(state => state.transactionByID);
     console.log("TRANSACTION BY ID: ", t); //OK

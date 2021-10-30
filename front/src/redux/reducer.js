@@ -6,7 +6,7 @@ import { GET_BALANCE,
  } from './actions';
 const initialState = {
     balance: undefined,
-    transactionList: undefined,
+    transactionList: [],
     transactionByID: undefined,
     transactionPost: {
         type: "",
