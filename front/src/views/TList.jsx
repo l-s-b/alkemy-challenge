@@ -12,10 +12,10 @@ export default function TList() {
     const list = useSelector(state => state.transactionList);
     const reversed = () => list ? [...list].reverse() : undefined;
 
-       useEffect(() => {
-        dispatch(getTransactionList(type, category));
-        return dispatch(getTransactionList(type, category));
-        }, [dispatch, type, category, lastDeleted]);
+    useEffect(() => {
+      dispatch(getTransactionList(type, category));
+      return dispatch(getTransactionList(type, category));
+    }, [dispatch, type, category, lastDeleted]);
 
 
     const handleType = (e) => {

@@ -3,7 +3,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router';
 import { clearTransaction, getTransaction, putTransaction } from '../redux/actions';
 import axios from 'axios';
-
 export default function TEdit() {
     const dispatch = useDispatch();
     const { id } = useParams();
@@ -29,7 +28,6 @@ export default function TEdit() {
     t && setAmount(t.amount);
     t && setDate(t.date);
     t && setCategory(t.category);
-
 /*    setValues(values => t && ({
     ...values,
     item: t.item,
@@ -44,7 +42,6 @@ export default function TEdit() {
           [e.target.name]: e.target.value,
         })) ;
       } */
-
     function handleSubmit(e) {
         e.preventDefault();
         axios.put(`http://localhost:1337/api/transaction/${t.id}`, {type, item, amount, date, category})
@@ -52,7 +49,6 @@ export default function TEdit() {
                 alert("Transaction registry successfully updated.");
             }).catch(e => console.error(e));
         }
-
     return (<>
         {t === undefined || null ? (
         <div> Loading... </div>
@@ -67,7 +63,6 @@ export default function TEdit() {
                     <label>{type}</label>
                   </div>
                 </div>
-
                 <div className="row">
                   <label>Amount: $</label>
                   <div className="separator"></div>
@@ -80,7 +75,6 @@ export default function TEdit() {
                     />
                   </div>
                 </div>
-
                 <div className="row">
                   <label>Item: </label>
                   <div className="inputCheck">
@@ -93,7 +87,6 @@ export default function TEdit() {
                     />
                   </div>
                 </div>
-
                 <div className="row">
             <label>Category: </label>
             <div className="inputCheck">
@@ -113,7 +106,6 @@ export default function TEdit() {
               </select>
             </div>
           </div>
-
           <div className="row">
             <label>Date: </label>
             <div className="separator"></div>
@@ -127,7 +119,6 @@ export default function TEdit() {
               />
             </div>
           </div>
-
               </div>
               <button className="bigBtn" type="submit">
           Edit
@@ -138,4 +129,3 @@ export default function TEdit() {
       </>
     );
 };
-

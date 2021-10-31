@@ -49,7 +49,7 @@ export function getTransaction(id) {
 
 export function clearBalance() {
     return {
-           type: GET_ALL_TRANSACTIONS,
+           type: GET_BALANCE,
            payload: undefined
    }
 };
