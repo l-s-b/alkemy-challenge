@@ -15,7 +15,7 @@ export default function TDetail() {
     const t = useSelector(state => state.transactionByID);
 
     return (<>
-    {t === undefined || null ? (
+    {!t ? (
         <div> Loading... </div>
     ) : (
             <div>

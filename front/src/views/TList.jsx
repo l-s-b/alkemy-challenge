@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'; // eslint-disable-next-line
-import { Link } from 'react-router-dom';
-import { getTransactionList, deleteTransaction, clearTransaction } from '../redux/actions';
+import { Link, useHistory } from 'react-router-dom';
+import { getTransactionList, deleteTransaction, getToEdit } from '../redux/actions';
 import '../css/Card.css';
 
 export default function TList() {
+    const { push } = useHistory();
     const dispatch = useDispatch();
     const [type, setType] = useState("");
     const [category, setCategory] = useState("");
@@ -14,26 +15,30 @@ export default function TList() {
 
     useEffect(() => {
       dispatch(getTransactionList(type, category));
-      return dispatch(getTransactionList(type, category));
     }, [dispatch, type, category, lastDeleted]);
 
 
     const handleType = (e) => {
         e.preventDefault();
         setType(e.target.value);
-      };
+    };
 
-      const handleCategory = (e) => {
-        e.preventDefault();
-        setCategory(e.target.value);
-      };
+    const handleCategory = (e) => {
+      e.preventDefault();
+      setCategory(e.target.value);
+    };
 
-      const handleDelete = (e) => {
-        e.preventDefault();
-        dispatch(deleteTransaction(e.target.value));
-        setLastDeleted(e.target.value);
-        console.log(e.target.value);
-      };
+    const handleDelete = (e) => {
+      e.preventDefault();
+      dispatch(deleteTransaction(e.target.value));
+      setLastDeleted(e.target.value);
+      console.log(e.target.value);
+    };
+
+    const handleEdit = (t) => {
+      dispatch(getToEdit(t));
+      push(`./transaction/edit/${t.id}`);
+    }
 
     return (<>
     {list ? (
@@ -82,7 +87,7 @@ export default function TList() {
                                     ${t.amount.toFixed(2)}
                                 </div>
                                 <Link className="link t-btn btn" to={`./transaction/${t.id}`}>Detail</Link>
-                                <Link className="link t-btn btn" to={`./transaction/edit/${t.id}`}>Edit</Link>
+                                <button className="link t-btn btn" onClick={() => handleEdit(t)}>Edit</button>
                                 <button
                                     value={t.id}
                                     className="t-btn btn delete-btn"

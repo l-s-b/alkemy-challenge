@@ -1,8 +1,9 @@
 import axios from 'axios';
 
+export const GET_BALANCE = "GET_BALANCE";
 export const GET_ALL_TRANSACTIONS = "GET_ALL_TRANSACTIONS";
 export const GET_TRANSACTION_BY_ID = "GET_TRANSACTION_BY_ID";
-export const GET_BALANCE = "GET_BALANCE";
+export const GET_TO_EDIT = "GET_TO_EDIT";
 export const POST_NEW_TRANSACTION = "POST_NEW_TRANSACTION";
 export const EDIT_TRANSACTION = "EDIT_TRANSACTION";
 export const DELETE_TRANSACTION = "DELETE_TRANSACTION";
@@ -45,6 +46,13 @@ export function getTransaction(id) {
                 })
             })
     }
+};
+
+export function getToEdit(tJSON) {
+    return (dispatch) => dispatch({
+        type: GET_TO_EDIT,
+        payload: tJSON,
+    });
 };
 
 export function clearBalance() {

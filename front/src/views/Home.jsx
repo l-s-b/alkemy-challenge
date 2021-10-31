@@ -12,9 +12,9 @@ export default function Home() {
     }, [dispatch]);
 
     const balance = useSelector(state => state.balance);
-    const limited = () => balance ? [...balance.transactions].slice(0,10) : undefined;
+    const limited = () => balance ? [...balance.transactions].reverse().slice(0,10) : undefined;
     return (<>
-    {balance === undefined || null ? (
+    {!balance ? (
         <div> Loading... </div>
     ) : (
             <div>

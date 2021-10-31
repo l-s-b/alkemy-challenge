@@ -1,61 +1,51 @@
-import React, { useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router';
-import { clearTransaction, getTransaction, putTransaction } from '../redux/actions';
+import { useHistory } from 'react-router';
+import { getToEdit, clearTransaction } from '../redux/actions';
 import axios from 'axios';
+
+
+
 export default function TEdit() {
     const dispatch = useDispatch();
-    const { id } = useParams();
-    const [type, setType] = useState("");
-    const [item, setItem] = useState("");
-    const [amount, setAmount] = useState(parseFloat(0));
-    const [date, setDate] = useState("");
-    const [category, setCategory] = useState("");
+    const { push } = useHistory();
+    const [values, setValues] = useState({
+      item: "",
+      amount: "",
+      category: "",
+      date: "",
 
-/*     useEffect(() => {
-        dispatch(getTransaction(id)); // eslint-disable-next-line 
-    }, []); */
+    });
 
-/*     useEffect(() => {
-      return () => { dispatch(clearTransaction()); };// eslint-disable-next-line 
-  }, []);
- */
+    const t = useSelector(state => state.transactionToEdit);
+    /* console.log("TRANSACTION READY FOR UPDATE: ", t); */
 
-  useEffect(() => {
-    console.log("TRANSACTION BY ID: ", id); // eslint-disable-next-line 
-},[]);
+    useCallback(() => {
+      dispatch(getToEdit());
+      return () => { dispatch(clearTransaction())}; // eslint-disable-next-line
+    }, []);
 
-    const t = useSelector(state => state.transactionByID);
-    console.log("TRANSACTION BY ID: ", t); //OK
-    
-    t && setType(t.type);
-    t && setItem(t.item);
-    t && setAmount(t.amount);
-    t && setDate(t.date);
-    t && setCategory(t.category);
-/*    setValues(values => t && ({
-    ...values,
-    item: t.item,
-    amount: parseFloat(t.amount),
-    date: t.date,
-    category: t.category,
-  })); */
-/* 
+
     function handleChange(e) {
+      e.preventDefault();
         setValues(values => ({
-          ...item,
+          ...values,
           [e.target.name]: e.target.value,
-        })) ;
-      } */
+        }));
+        console.log(values);
+      }
+
     function handleSubmit(e) {
-        e.preventDefault();
-        axios.put(`http://localhost:1337/api/transaction/${t.id}`, /* {type, item, amount, date, category} */)
-            .then(response => {
-                alert("Transaction registry successfully updated.");
-            }).catch(e => console.error(e));
-        }
+      e.preventDefault();
+        axios.put(`http://localhost:1337/api/transaction/${t.id}`, values)
+          .then(response => {
+            alert("Transaction registry successfully updated.");
+            push(`/transactions`);
+        }).catch(e => console.error(e));
+          }
+
     return (<>
-        {t === undefined || null ? (
+        {!t ? (
         <div> Loading... </div>
     ) : (
           <div className="contRend">
@@ -65,7 +55,7 @@ export default function TEdit() {
                 <div className="row">
                   <label>Type: </label>
                   <div className="inputCheck">
-                    <label>{/* {type} */}</label>
+                    <label>{t.type}</label>
                   </div>
                 </div>
                 <div className="row">
@@ -75,8 +65,8 @@ export default function TEdit() {
                     <input
                       type="number"
                       name="amount"
-                      /* value={amount} */
-                      onChange={e => setAmount(e.target.value)}
+                      defaultValue={t.amount}
+                      onChange={handleChange}/*{e => setAmount(e.target.value)} */
                     />
                   </div>
                 </div>
@@ -86,8 +76,8 @@ export default function TEdit() {
                     <input
                       type="text"
                       name="item"
-                      /* value={item} */
-                      onChange={e => setItem(e.target.value)}
+                      defaultValue={t.item}
+                      onChange={handleChange}/*{e => setItem(e.target.value)} */
                       placeholder="(concept, description)"
                     />
                   </div>
@@ -95,8 +85,8 @@ export default function TEdit() {
                 <div className="row">
             <label>Category: </label>
             <div className="inputCheck">
-              <select name="category" onChange={e => setCategory(e.target.value)} defaultValue="">
-                <option /* value={category} */>{/* {category} */}</option>
+              <select name="category" onChange={handleChange} /*{e => setCategory(e.target.value)} */ defaultValue="">
+                <option value={t.category}>{t.category}</option>
                 <option value="Food">Food</option>
                 <option value="Clothing">Clothing</option>
                 <option value="Transportation">Transportation</option>
@@ -119,8 +109,8 @@ export default function TEdit() {
                 className="date"
                 type="text" //possibly "date"
                 name="date"
-                /* value={date} */
-                onChange={e => setDate(e.target.value)}
+                defaultValue={t.date}
+                onChange={handleChange} /*{e => setDate(e.target.value)} */
               />
             </div>
           </div>

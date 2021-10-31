@@ -1,13 +1,15 @@
 import { GET_BALANCE,
     GET_ALL_TRANSACTIONS,
     GET_TRANSACTION_BY_ID, // eslint-disable-next-line
+    GET_TO_EDIT, // eslint-disable-next-line
     POST_NEW_TRANSACTION, // eslint-disable-next-line
-    EDIT_TRANSACTION, // eslint-disable-next-line
+    EDIT_TRANSACTION,
  } from './actions';
 const initialState = {
     balance: null,
     transactionList: [],
     transactionByID: null,
+    transactiontoEdit: {},
     transactionPost: {
         type: "",
         item: "",
@@ -38,6 +40,13 @@ function reducer(state = initialState, action) {
             return {
                 ...state,
                 transactionByID: action.payload
+            }
+        }
+
+        case GET_TO_EDIT: {
+            return {
+                ...state,
+                transactionToEdit: action.payload
             }
         }
 
