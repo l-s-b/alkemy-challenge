@@ -12,13 +12,18 @@ export default function TEdit() {
     const [date, setDate] = useState("");
     const [category, setCategory] = useState("");
 
-    useEffect(() => {
-        dispatch(getTransaction(id));
-    },);
+/*     useEffect(() => {
+        dispatch(getTransaction(id)); // eslint-disable-next-line 
+    }, []); */
 
-    useEffect(() => {
-      return () => { dispatch(clearTransaction()); };
+/*     useEffect(() => {
+      return () => { dispatch(clearTransaction()); };// eslint-disable-next-line 
   }, []);
+ */
+
+  useEffect(() => {
+    console.log("TRANSACTION BY ID: ", id); // eslint-disable-next-line 
+},[]);
 
     const t = useSelector(state => state.transactionByID);
     console.log("TRANSACTION BY ID: ", t); //OK
@@ -44,7 +49,7 @@ export default function TEdit() {
       } */
     function handleSubmit(e) {
         e.preventDefault();
-        axios.put(`http://localhost:1337/api/transaction/${t.id}`, {type, item, amount, date, category})
+        axios.put(`http://localhost:1337/api/transaction/${t.id}`, /* {type, item, amount, date, category} */)
             .then(response => {
                 alert("Transaction registry successfully updated.");
             }).catch(e => console.error(e));
@@ -60,7 +65,7 @@ export default function TEdit() {
                 <div className="row">
                   <label>Type: </label>
                   <div className="inputCheck">
-                    <label>{type}</label>
+                    <label>{/* {type} */}</label>
                   </div>
                 </div>
                 <div className="row">
@@ -70,7 +75,7 @@ export default function TEdit() {
                     <input
                       type="number"
                       name="amount"
-                      value={amount}
+                      /* value={amount} */
                       onChange={e => setAmount(e.target.value)}
                     />
                   </div>
@@ -81,7 +86,7 @@ export default function TEdit() {
                     <input
                       type="text"
                       name="item"
-                      value={item}
+                      /* value={item} */
                       onChange={e => setItem(e.target.value)}
                       placeholder="(concept, description)"
                     />
@@ -91,7 +96,7 @@ export default function TEdit() {
             <label>Category: </label>
             <div className="inputCheck">
               <select name="category" onChange={e => setCategory(e.target.value)} defaultValue="">
-                <option value={category}>{category}</option>
+                <option /* value={category} */>{/* {category} */}</option>
                 <option value="Food">Food</option>
                 <option value="Clothing">Clothing</option>
                 <option value="Transportation">Transportation</option>
@@ -114,7 +119,7 @@ export default function TEdit() {
                 className="date"
                 type="text" //possibly "date"
                 name="date"
-                value={date}
+                /* value={date} */
                 onChange={e => setDate(e.target.value)}
               />
             </div>

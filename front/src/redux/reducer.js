@@ -5,9 +5,9 @@ import { GET_BALANCE,
     EDIT_TRANSACTION, // eslint-disable-next-line
  } from './actions';
 const initialState = {
-    balance: undefined,
+    balance: null,
     transactionList: [],
-    transactionByID: undefined,
+    transactionByID: null,
     transactionPost: {
         type: "",
         item: "",
@@ -15,7 +15,7 @@ const initialState = {
         date: "",
         category: ""
     },
-    transactionEdit: undefined,
+    transactionEdit: null,
 };
 
 function reducer(state = initialState, action) {

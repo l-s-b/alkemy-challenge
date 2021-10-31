@@ -43,7 +43,7 @@ export function getTransaction(id) {
                     type: GET_TRANSACTION_BY_ID,
                     payload: response.data,
                 })
-            }).catch(e => console.error(e))
+            })
     }
 };
 
