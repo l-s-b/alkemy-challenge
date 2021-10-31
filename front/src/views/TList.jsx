@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'; // eslint-disable-next-line
 import { Link, useHistory } from 'react-router-dom';
 import { getTransactionList, deleteTransaction, getToEdit } from '../redux/actions';
-import '../css/Card.css';
+import '../css/TransactionCard.css';
 
 export default function TList() {
     const { push } = useHistory();
@@ -87,13 +87,16 @@ export default function TList() {
                                     ${t.amount.toFixed(2)}
                                 </div>
                                 <Link className="link t-btn btn" to={`./transaction/${t.id}`}>Detail</Link>
-                                <button className="link t-btn btn" onClick={() => handleEdit(t)}>Edit</button>
-                                <button
-                                    value={t.id}
-                                    className="t-btn btn delete-btn"
-                                    onClick={handleDelete}
-                                    >Delete
-                                </button>
+                                <button className="t-btn btn" id="edit-btn" onClick={() => handleEdit(t)}>
+                                Edit
+                            </button>
+                            <button
+                                value={t.id}
+                                className="t-btn btn"
+                                id="delete-btn"
+                                onClick={handleDelete}
+                                >Delete
+                            </button>
                             </div>
                         </div>
 

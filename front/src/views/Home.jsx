@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getBalance } from '../redux/actions';
-import '../css/Card.css';
+import '../css/TransactionCard.css';
 
 export default function Home() {
     const dispatch = useDispatch();
@@ -18,11 +18,14 @@ export default function Home() {
         <div> Loading... </div>
     ) : (
             <div>
-                <h2>Your Balance</h2>
+                <h2 className="t-title">Your Balance</h2>
                 <h2>${balance.funds}</h2>
                 <div className="t-cards">
-                <h2>Latest transactions</h2>
-                <Link className="link" to='/transactions'><h4>See all</h4></Link>
+                <div id="balance-row">
+                    <h2 className="t-title">Latest transactions (</h2>
+                    <Link id="see_all" to='/transactions'><span>See all</span></Link>
+                    <h2 className="t-title">)</h2>
+                </div>
                 {limited().map(t =>
                         <Link className="link t-card" to={`./transaction/${t.id}`}>
                         <div className="t-date">{t.date}</div>
@@ -33,8 +36,6 @@ export default function Home() {
                                 >
                                     ${t.amount.toFixed(2)}
                                 </div>
-                                <button className="btn t-btn">Edit</button>
-                                <button className="btn t-btn">Delete</button>
                             </div>
                         </Link>
                 )}

@@ -16,8 +16,8 @@ function App() {
         <Route exact path='/transaction/edit/:id' component={TEdit} />
         <Route exact path='/transaction/new' component={TPost} />
         <Route exact path='/transaction/:id' component={TDetail} />
-        <Route exact path='/main' component={Home} />
         <Route exact path='/transactions' component={TList} />
+        <Route exact path='/' component={Home} />
       </Switch>
       <Route path='/' component={Footer} />
     </div>

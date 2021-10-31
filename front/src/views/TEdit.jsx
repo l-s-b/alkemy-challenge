@@ -9,16 +9,16 @@ import axios from 'axios';
 export default function TEdit() {
     const dispatch = useDispatch();
     const { push } = useHistory();
-    const [values, setValues] = useState({
-      item: "",
-      amount: "",
-      category: "",
-      date: "",
-
-    });
 
     const t = useSelector(state => state.transactionToEdit);
     /* console.log("TRANSACTION READY FOR UPDATE: ", t); */
+
+    const [values, setValues] = useState({
+      item: t.item,
+      amount: parseFloat(t.amount),
+      category: t.category,
+      date: t.date,
+    });
 
     useCallback(() => {
       dispatch(getToEdit());
@@ -64,6 +64,7 @@ export default function TEdit() {
                   <div className="inputCheck">
                     <input
                       type="number"
+                      step="0.01"
                       name="amount"
                       defaultValue={t.amount}
                       onChange={handleChange}/*{e => setAmount(e.target.value)} */

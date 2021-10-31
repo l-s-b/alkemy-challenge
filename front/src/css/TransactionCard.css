@@ -76,10 +76,19 @@ font-weight: 400;
     padding: 0 0.5em;
     margin-left: 0.4rem;
 }
-.delete-btn {
+
+#edit-btn {
+    background-color: var(--extraLightBlue);
+}
+#edit-btn:hover {
+    background-color: var(--lightBlue);
+    color: var(--white);
+}
+
+#delete-btn {
     background-color: var(--lightPink);
 }
-.delete-btn:hover {
+#delete-btn:hover {
     background-color: red;
     color: var(--white);
 }
@@ -91,5 +100,24 @@ select {
 #filter-label {
     font-size: 1.25rem;
     font-weight: 600;
+}
+
+#balance-row {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin: auto;
+    font-weight: 400 !important;
+}
+
+#see_all {
+    font-size: 2rem;
+    font-weight: 400 !important;
+    color: var(--lightBlue);
+}
+
+#see_all:hover {
+    color: var(--transBlue);
 }
 

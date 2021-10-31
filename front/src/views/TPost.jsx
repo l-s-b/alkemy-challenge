@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from 'axios';
-import "../css/Post.css";
+import "../css/FormCard.css";
 import { useHistory } from "react-router";
 
 export default function TPost() {
@@ -28,7 +28,7 @@ export default function TPost() {
     axios.post('http://localhost:1337/api/transaction', values)
         .then(response => {
           axios.get('http://localhost:1337/api/transactions')
-          .then(results => { push(`${results.data[results.data.length - 1].id}`) });
+          .then(results => { push(`/transactions`) });
             alert("New transaction successfully registered.");
         }).catch(e => console.error(e));
     }
@@ -57,11 +57,13 @@ export default function TPost() {
           </div>
 
           <div className="row">
-            <label>Amount: $</label>
+            <label>Amount:</label>
             <div className="separator"></div>
             <div className="inputCheck">
+              <span>$</span>
               <input
                 type="number"
+                step="0.01"
                 name="amount"
                 value={values.amount}
                 onChange={handleChange}

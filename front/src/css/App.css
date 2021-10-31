@@ -22,7 +22,9 @@
 
 }
 a {
-all: revert
+all: unset;
+cursor: pointer;
+font-weight: unset;
 }
 
 .App {
