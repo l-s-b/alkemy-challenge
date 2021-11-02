@@ -86,7 +86,7 @@ export default function TList() {
                                 >
                                     ${t.amount.toFixed(2)}
                                 </div>
-                                <Link className="link t-btn btn" to={`./transaction/${t.id}`}>Detail</Link>
+                                <Link className="link t-btn btn" to={`/transaction/${t.id}`}>Detail</Link>
                                 <button className="t-btn btn" id="edit-btn" onClick={() => handleEdit(t)}>
                                 Edit
                             </button>

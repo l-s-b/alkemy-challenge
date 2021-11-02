@@ -21,12 +21,12 @@ export default function TDetail() {
         e.preventDefault();
         dispatch(deleteTransaction(e.target.value));
         setLastDeleted(e.target.value);
-        console.log(e.target.value);
+        push(`../../transactions`);
       };
 
       const handleEdit = (t) => {
         dispatch(getToEdit(t));
-        push(`./transaction/edit/${t.id}`);
+        push(`./edit/${t.id}`);
       }
 
     return (<>
