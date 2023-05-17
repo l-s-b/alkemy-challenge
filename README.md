@@ -1,6 +1,7 @@
-##IMPORTANTE -> Para clonar el proyecto:
+## IMPORTANTE -> Para clonar el proyecto:
 * Descargar psql (https://www.postgresql.org/download/)
 * En SQL shell:
+
 `CREATE DATABASE bankemy;`
 
 `\c bankemy`
