@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from 'axios';
 import "../css/FormCard.css";
-import { useHistory } from "react-router";
+import { useHistory } from "react-router-dom";
 
 export default function TPost() {
   const { push } = useHistory();

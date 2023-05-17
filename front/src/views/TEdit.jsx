@@ -1,10 +1,8 @@
 import React, { useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { useHistory } from 'react-router';
+import { useHistory } from 'react-router-dom';
 import { getToEdit, clearTransaction } from '../redux/actions';
 import axios from 'axios';
-
-
 
 export default function TEdit() {
     const dispatch = useDispatch();
