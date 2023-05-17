@@ -7,12 +7,15 @@
 `\c bankemy`
 
 En /back:
-`npm i`
 * Crear archivo .env, completar variables según base de datos local:
 DB_USER=(usuario de postgres)
 DB_PASSWORD=(contraseña de usuario postgres)
 DB_HOST=localhost:5432
 DB_NAME=bankemy
+
+`npm i`
+
+`npm start`
 
 En /front:
 
@@ -21,6 +24,8 @@ En /front:
 `nvm use 16`
 
 `npm i`
+
+`npm start`
 
 # CHALLENGE FULL STACK - JavaScript 🚀
 
