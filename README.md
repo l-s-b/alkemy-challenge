@@ -22,7 +22,7 @@ En /front:
 
 `npm i`
 
-﻿# CHALLENGE FULL STACK - JavaScript 🚀
+# CHALLENGE FULL STACK - JavaScript 🚀
 
 ## Objetivo
 Desarrollar una aplicación para administración de presupuesto personal. La misma debe
