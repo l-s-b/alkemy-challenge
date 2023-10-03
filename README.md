@@ -28,6 +28,7 @@ En /front:
 `npm start`
 
 # CHALLENGE FULL STACK - JavaScript 🚀
+https://github.com/l-s-b/alkemy-challenge/assets/76989324/75b11933-85ec-4bd2-b47d-8cd9fb53109c
 
 ## Objetivo
 Desarrollar una aplicación para administración de presupuesto personal. La misma debe
